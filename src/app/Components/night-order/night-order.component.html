@@ -1,0 +1,40 @@
+<div class="p5 text-center word-padding">
+    <h5>Night Ordering</h5>
+</div>
+
+<div class="row gy-2">
+    <p class="p5 text-center">First Night</p>
+    <div *ngFor="let obj of (activePlayers | firstNight : gameNightsheet)">
+        <div *ngIf="obj.playerRole !== undefined" class="row border">
+            <div class="col-md-1">
+                <img [src]="obj.playerRole.icon">
+            </div>
+        
+            <div class="col-md-5">
+                <p class="text-center word-padding">{{obj.playerName}}</p>
+            </div>
+            
+            <div class="col-md-6">
+                <p class="text-center word-padding">{{obj.playerRole.name}}</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="p5 text-center">Other Nights</p>
+    <div *ngFor="let obj of (activePlayers | otherNights : gameNightsheet)">
+        <div *ngIf="obj.playerRole !== undefined" class="row border">
+            <div class="col-md-1">
+                <img [src]="obj.playerRole.icon">
+            </div>
+        
+            <div class="col-md-5">
+                <p class="text-center word-padding">{{obj.playerName}}</p>
+            </div>
+            
+            <div class="col-md-6">
+                <p class="text-center word-padding">{{obj.playerRole.name}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

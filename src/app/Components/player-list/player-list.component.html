@@ -1,0 +1,20 @@
+<div class="p-5 text-center">
+    <h5>Player Management</h5>
+</div>
+
+<div class="row gy-5" *ngFor="let obj of activePlayers">
+    <div class="col-md-1">
+        {{obj.playerIndex}}
+    </div>
+    <div class="col-md-4">
+        <input mdbInput type="text" [(ngModel)]="obj.playerName" (change)="update()" id="player{{obj.playerIndex}}" class="form-control">
+    </div>
+    <div class="col-md-4">
+        
+    </div>
+    <div class="col-md-3">
+        Test 3
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="addPlayer()">Add Player</button> 
