@@ -17,5 +17,5 @@ export class NightOrderComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     this.activePlayers = changes.activePlayers.currentValue
   }
- 
+
 }

@@ -4,17 +4,22 @@
 
 <div class="row gy-5" *ngFor="let obj of activePlayers">
     <div class="col-md-1">
-        {{obj.playerIndex}}
+      <button type="button" class="btn btn-secondary btn-floating" (click)="deletePlayer(obj)">X</button>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-2">
         <input mdbInput type="text" [(ngModel)]="obj.playerName" (change)="update()" id="player{{obj.playerIndex}}" class="form-control">
     </div>
+    <div class="col-md-2">
+      Something
+    </div>
     <div class="col-md-4">
-        
+      <div *ngIf="obj.playerRole !== undefined">
+        <img [src]="obj.playerRole.print" class="print">
+      </div>
     </div>
     <div class="col-md-3">
-        Test 3
+
     </div>
 </div>
 
-<button type="button" class="btn btn-primary" (click)="addPlayer()">Add Player</button> 
+<button type="button" class="btn btn-primary" (click)="addPlayer()">Add Player</button>

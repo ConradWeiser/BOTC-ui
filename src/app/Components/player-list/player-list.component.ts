@@ -7,7 +7,7 @@ import { Role } from 'src/app/Services/preloader.service';
   styleUrls: ['./player-list.component.scss']
 })
 export class PlayerListComponent {
-  
+
   @Input() availableRoles: Role[] = []
 
   @Input() activePlayers: PlayerElement[] = []
@@ -29,6 +29,14 @@ export class PlayerListComponent {
   update() {
     this.activePlayersEmitter.emit(this.activePlayers)
     console.log(this.activePlayers)
+  }
+
+  deletePlayer(player: PlayerElement) {
+    const index = this.activePlayers.indexOf(player, 0)
+    if(index > -1) {
+      this.activePlayers.splice(index, 1)
+      this.activePlayersEmitter.emit(this.activePlayers)
+    }
   }
 
   test() {
