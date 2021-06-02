@@ -5,7 +5,7 @@
 <div class="row gy-2">
     <p class="p5 text-center">First Night</p>
     <div *ngFor="let obj of (activePlayers | firstNight : gameNightsheet)">
-        <div *ngIf="obj.playerRole !== undefined" class="row border" [style.background-color]="obj | statusToColor">
+        <div *ngIf="obj.playerRole !== undefined" class="row border constrained" [style.background-color]="obj | statusToColor">
             <div class="col-md-1">
                 <img [src]="obj.playerRole.icon">
             </div>
@@ -22,7 +22,7 @@
 
     <p class="p5 text-center">Other Nights</p>
     <div *ngFor="let obj of (activePlayers | otherNights : gameNightsheet)">
-        <div *ngIf="obj.playerRole !== undefined" class="row border" [style.background-color]="obj | statusToColor">
+        <div *ngIf="obj.playerRole !== undefined" class="row border constrained" [style.background-color]="obj | statusToColor">
             <div class="col-md-1">
                 <img [src]="obj.playerRole.icon">
             </div>

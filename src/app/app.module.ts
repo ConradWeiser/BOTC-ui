@@ -17,6 +17,8 @@ import { OtherNightsPipe } from './Pipes/other-nights.pipe';
 import { StatusPanelComponent } from './Components/status-panel/status-panel.component';
 import { StatusToColorPipe } from './Pipes/status-to-color.pipe';
 import { NotesPanelComponent } from './Components/notes-panel/notes-panel.component';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { NotesPanelComponent } from './Components/notes-panel/notes-panel.compon
     MdbModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,22 +1,31 @@
-<div class="container-fluid bg-light px-4 border">
-  <div class="row gx-2">
+<mat-tab-group>
+  <mat-tab label="Game Setup">
 
-    <div class="col-lg-8 col-md-12">
-      <app-player-list [availableRoles]="roles" [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-player-list>
-    </div>
+  </mat-tab>
 
-    <div class="col-lg-4 col-md-6">
-      <app-night-order [activePlayers]="activePlayers" [gameNightsheet]="nightsheet"></app-night-order>
-    </div>
-  </div>
+  <mat-tab label="Storyteller Board">
+    <div class="container-fluid bg-light px-4 border">
+      <div class="row gx-2">
 
-  <div class="row gx-4 container-divider">
-    <div class="col-lg-5 col-md-8">
-      <app-status-panel [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-status-panel>
-    </div>
+        <div class="col-lg-8 col-md-12 border">
+          <app-player-list [availableRoles]="roles" [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-player-list>
+        </div>
 
-    <div class="col-lg-7 col-md-8">
-      <app-notes-panel [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-notes-panel>
+        <div class="col-lg-4 col-md-6 border">
+          <app-night-order [activePlayers]="activePlayers" [gameNightsheet]="nightsheet"></app-night-order>
+        </div>
+      </div>
+
+      <div class="row gx-4 container-divider">
+        <div class="col-lg-5 col-md-8">
+          <app-status-panel [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-status-panel>
+        </div>
+
+        <div class="col-lg-7 col-md-8">
+          <app-notes-panel [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-notes-panel>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </mat-tab>
+</mat-tab-group>
+
