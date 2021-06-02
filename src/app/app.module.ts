@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { NightOrderComponent } from './Components/night-order/night-order.component';
 import { FirstNightPipe } from './Pipes/first-night.pipe';
 import { OtherNightsPipe } from './Pipes/other-nights.pipe';
+import { StatusPanelComponent } from './Components/status-panel/status-panel.component';
+import { StatusToColorPipe } from './Pipes/status-to-color.pipe';
+import { NotesPanelComponent } from './Components/notes-panel/notes-panel.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,9 @@ import { OtherNightsPipe } from './Pipes/other-nights.pipe';
     NightOrderComponent,
     FirstNightPipe,
     OtherNightsPipe,
+    StatusPanelComponent,
+    StatusToColorPipe,
+    NotesPanelComponent,
   ],
   imports: [
     BrowserModule,

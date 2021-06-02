@@ -17,18 +17,17 @@ export class PlayerListComponent {
 
   addPlayer() {
 
-    const rand = Math.floor(Math.random() * 50)
-
     this.activePlayers.push({
       playerName: "",
       playerIndex: this.activePlayers.length,
-      playerRole: this.availableRoles[rand]
+      playerRole: undefined,
+      isDead: false,
+      isDrunk: false
     })
   }
 
   update() {
     this.activePlayersEmitter.emit(this.activePlayers)
-    console.log(this.activePlayers)
   }
 
   deletePlayer(player: PlayerElement) {
@@ -42,11 +41,25 @@ export class PlayerListComponent {
   test() {
     console.log(this.activePlayers)
   }
+
+  onSelection(event: any, player: PlayerElement) {
+    // Get the role with the given name
+    const role = this.availableRoles.find((role) => {return role.name == event})
+    player.playerRole = role
+    this.update()
+  }
 }
 
 export interface PlayerElement {
   playerName: string,
   playerIndex: number,
   playerRole?: Role
-  //TODO: Consider adding a player status here
+  isDead: boolean
+  isDrunk: boolean
+}
+
+export enum Status {
+  NORMAL,
+  POISONED,
+  DEAD
 }

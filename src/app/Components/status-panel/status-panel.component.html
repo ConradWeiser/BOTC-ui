@@ -1,0 +1,19 @@
+<div *ngFor="let obj of activePlayers" class="border player-row d-flex align-items-center" [style.background-color]="obj | statusToColor">
+  <div class="col-md-2 title">
+    <h4>{{obj.playerName}}</h4>
+  </div>
+  <div class="col-md-2 title">
+    <h4 *ngIf="obj.playerRole !== undefined">{{obj.playerRole.name}}</h4>
+  </div>
+  <div class="col-md-3">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="obj.isDead" [value]="obj.isDead" (change)="update()">
+    <label class="form-check-label">Dead</label>
+  </div>
+  <div class="col-md-3">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="obj.isDrunk" [value]="obj.isDrunk" (change)="update()">
+    <label class="form-check-label">Drunk</label>
+  </div>
+  <div class="col-md-2">
+  </div>
+
+</div>

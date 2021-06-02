@@ -10,7 +10,9 @@
         <input mdbInput type="text" [(ngModel)]="obj.playerName" (change)="update()" id="player{{obj.playerIndex}}" class="form-control">
     </div>
     <div class="col-md-2">
-      Something
+      <select class="form control" [(ngModel)]="obj.playerRole" (ngModelChange)="onSelection($event, obj)">
+        <option *ngFor="let role of availableRoles" [ngValue]="role.name">{{role.name}}</option>
+      </select>
     </div>
     <div class="col-md-4">
       <div *ngIf="obj.playerRole !== undefined">
@@ -23,3 +25,4 @@
 </div>
 
 <button type="button" class="btn btn-primary" (click)="addPlayer()">Add Player</button>
+<button type="button" class="btn btn-primary" (click)="test()">Test</button>
