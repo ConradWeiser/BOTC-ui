@@ -22,7 +22,9 @@ export class PlayerListComponent {
       playerIndex: this.activePlayers.length,
       playerRole: undefined,
       isDead: false,
-      isDrunk: false
+      isDrunk: false,
+      isPoisoned: false,
+      isProtected: false
     })
   }
 
@@ -56,6 +58,8 @@ export interface PlayerElement {
   playerRole?: Role
   isDead: boolean
   isDrunk: boolean
+  isPoisoned: boolean
+  isProtected: boolean
 }
 
 export enum Status {

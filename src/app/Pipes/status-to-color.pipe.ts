@@ -12,6 +12,14 @@ export class StatusToColorPipe implements PipeTransform {
       return '#ffe6e6'
     }
 
+    if(value.isProtected) {
+      return '#e6f5ff'
+    }
+
+    if(value.isPoisoned) {
+      return '#f2ffe6'
+    }
+
     if(value.isDrunk) {
       return '#ffe6ff'
     }
