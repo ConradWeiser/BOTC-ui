@@ -18,6 +18,13 @@ import { StatusPanelComponent } from './Components/status-panel/status-panel.com
 import { StatusToColorPipe } from './Pipes/status-to-color.pipe';
 import { NotesPanelComponent } from './Components/notes-panel/notes-panel.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { SetupPageComponent } from './Components/setup-page/setup-page.component';
+import {MatSelectModule} from '@angular/material/select';
+import { RoleMatchPipe } from './Pipes/role-match.pipe';
+import {MatInputModule} from '@angular/material/input';
+import { MergeStringsPipe } from './Pipes/merge-strings.pipe';
+
+
 
 
 @NgModule({
@@ -34,6 +41,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     StatusPanelComponent,
     StatusToColorPipe,
     NotesPanelComponent,
+    SetupPageComponent,
+    RoleMatchPipe,
+    MergeStringsPipe,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +51,9 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSelectModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

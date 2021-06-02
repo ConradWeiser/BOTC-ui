@@ -1,20 +1,15 @@
-<div class="p-5 text-center">
-    <h5>Player Management</h5>
+<div class="p-3 text-center">
+    <h5>Game Board</h5>
 </div>
 
 <div class="row gy-5" *ngFor="let obj of activePlayers">
-    <div class="col-md-1">
-      <button type="button" class="btn btn-secondary btn-floating" (click)="deletePlayer(obj)">X</button>
+    <div class="col-md-2">
+        <input mdbInput type="text" [(ngModel)]="obj.playerName" (change)="update()" id="player{{obj.playerIndex}}" class="form-control" [disabled]="true">
     </div>
     <div class="col-md-2">
-        <input mdbInput type="text" [(ngModel)]="obj.playerName" (change)="update()" id="player{{obj.playerIndex}}" class="form-control">
+      <input mdbInput type="text">
     </div>
-    <div class="col-md-2">
-      <select class="form control" [(ngModel)]="obj.playerRole" (ngModelChange)="onSelection($event, obj)">
-        <option *ngFor="let role of availableRoles" [ngValue]="role.name">{{role.name}}</option>
-      </select>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-5">
       <div *ngIf="obj.playerRole !== undefined">
         <img [src]="obj.playerRole.print" class="print">
       </div>
@@ -23,6 +18,3 @@
 
     </div>
 </div>
-
-<button type="button" class="btn btn-primary" (click)="addPlayer()">Add Player</button>
-<button type="button" class="btn btn-primary" (click)="test()">Test</button>

@@ -15,7 +15,9 @@ export class NightOrderComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.activePlayers = changes.activePlayers.currentValue
+    if(changes.activePlayers) {
+      this.activePlayers = changes.activePlayers.currentValue
+    }
   }
 
 }

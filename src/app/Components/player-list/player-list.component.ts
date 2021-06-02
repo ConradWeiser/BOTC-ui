@@ -24,7 +24,8 @@ export class PlayerListComponent {
       isDead: false,
       isDrunk: false,
       isPoisoned: false,
-      isProtected: false
+      isProtected: false,
+      dailyNotes: [[]]
     })
   }
 
@@ -38,10 +39,6 @@ export class PlayerListComponent {
       this.activePlayers.splice(index, 1)
       this.activePlayersEmitter.emit(this.activePlayers)
     }
-  }
-
-  test() {
-    console.log(this.activePlayers)
   }
 
   onSelection(event: any, player: PlayerElement) {
@@ -60,6 +57,8 @@ export interface PlayerElement {
   isDrunk: boolean
   isPoisoned: boolean
   isProtected: boolean
+
+  dailyNotes: string[][]
 }
 
 export enum Status {

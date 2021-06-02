@@ -28,8 +28,9 @@ export class AppComponent implements OnInit {
     this.preloader.hatredsObservable.pipe(map((hatreds) => {this.hatreds = hatreds})).subscribe()
   }
 
-  setActiveRoles(roles: Role[]) {
-    this.activeRoles = roles
+  setActiveRoles(event: Role[]) {
+    this.activeRoles = event
+    this.activeRoles = this.activeRoles.map(x => Object.assign({}, x))
   }
 
   updateActivePlayers(event: PlayerElement[]) {

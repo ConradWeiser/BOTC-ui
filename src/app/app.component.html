@@ -1,6 +1,8 @@
 <mat-tab-group>
   <mat-tab label="Game Setup">
-
+    <app-setup-page [activeRoles]="activeRoles" [availableRoles]="roles" (activeRolesEmitter)="setActiveRoles($event)"
+                    [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)">
+    </app-setup-page>
   </mat-tab>
 
   <mat-tab label="Storyteller Board">
@@ -8,7 +10,7 @@
       <div class="row gx-2">
 
         <div class="col-lg-8 col-md-12 border">
-          <app-player-list [availableRoles]="roles" [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-player-list>
+          <app-player-list [availableRoles]="activeRoles" [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-player-list>
         </div>
 
         <div class="col-lg-4 col-md-6 border">
@@ -17,11 +19,11 @@
       </div>
 
       <div class="row gx-4 container-divider">
-        <div class="col-lg-5 col-md-8">
+        <div class="col-md-6">
           <app-status-panel [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-status-panel>
         </div>
 
-        <div class="col-lg-7 col-md-8">
+        <div class="col-md-6">
           <app-notes-panel [activePlayers]="activePlayers" (activePlayersEmitter)="updateActivePlayers($event)"></app-notes-panel>
         </div>
       </div>

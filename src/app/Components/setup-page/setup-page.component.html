@@ -1,0 +1,124 @@
+<div>
+    <input type="file" class="file-input" (change)="loadScript($event)" #fileupload>
+    <button type="button" class="btn btn-primary" (click)="fileupload.click()">Load Script</button>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Game Setup</h3>
+            <button type="button" class="btn btn-primary" (click)="addPlayer()">Add Player ({{activePlayers.length}})</button>
+            <div class="row" *ngFor="let player of activePlayers">  <!-- For each active player, render the game setup list -->
+                <div class="col-md-1 p-2">
+                  <button type="button" class="btn btn-danger btn-floating" (click)="removePlayer(player)">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+                <div class="col-md-1 p-2">
+                  {{player.playerIndex + 1}}
+                </div>
+                <div class="col-md-4 p-2">
+                  <input mdbInput type="text" [(ngModel)]="player.playerName" (change)="update()">
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field>
+                    <mat-select placeholder="Role" [(value)]="player.playerRole" (selectionChange)="update()">
+                      <mat-optgroup [label]="'Town Roles'" [disabled]="false">
+                        <mat-option *ngFor="let town of townRoles" [value]="town">{{town.name}}</mat-option>
+                      </mat-optgroup>
+                      <mat-optgroup [label]="'Outsider Roles'" [disabled]="false">
+                        <mat-option *ngFor="let outsider of outsiderRoles" [value]="outsider">{{outsider.name}}</mat-option>
+                      </mat-optgroup>
+                      <mat-optgroup [label]="'Minion Roles'" [disabled]="false">
+                        <mat-option *ngFor="let minion of minionRoles" [value]="minion">{{minion.name}}</mat-option>
+                      </mat-optgroup>
+                      <mat-optgroup [label]="'Demon Roles'" [disabled]="false">
+                        <mat-option *ngFor="let demon of demonRoles" [value]="demon">{{demon.name}}</mat-option>
+                      </mat-optgroup>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h3>Loaded Roles</h3>
+            <h5 class="border-top border-bottom town-color">Town Roles</h5>
+            <div class="row" *ngFor="let role of townRoles" [style.background-color]="role | roleMatch: activePlayers">
+                <div class="col-md-3">
+                    <h5>{{role.name}}</h5>
+                </div>
+                <div class="col-md-9">
+                    <img [src]="role.print" class="role-image">
+                </div>
+            </div>
+            <h5 class="border-top border-bottom town-color">Outsider Roles</h5>
+            <div class="row" *ngFor="let role of outsiderRoles" [style.background-color]="role | roleMatch: activePlayers">
+                <div class="col-md-3">
+                    <h5>{{role.name}}</h5>
+                </div>
+                <div class="col-md-9">
+                    <img [src]="role.print" class="role-image">
+                </div>
+            </div>
+            <h5 class="border-top border-bottom demon-color">Minion Roles</h5>
+            <div class="row" *ngFor="let role of minionRoles" [style.background-color]="role | roleMatch: activePlayers">
+                <div class="col-md-3">
+                    <h5>{{role.name}}</h5>
+                </div>
+                <div class="col-md-9">
+                    <img [src]="role.print" class="role-image">
+                </div>
+            </div>
+            <h5 class="border-top border-bottom demon-color">Demon Roles</h5>
+            <div class="row" *ngFor="let role of demonRoles" [style.background-color]="role | roleMatch: activePlayers">
+                <div class="col-md-3">
+                    <h5>{{role.name}}</h5>
+                </div>
+                <div class="col-md-9">
+                    <img [src]="role.print" class="role-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <form class="ratioForm">
+          <div class="row">
+            <table cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Townsfolk</mat-label>
+                    <input matInput type="number" name="ratio-town" [(ngModel)]="ratioTown">
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Outsiders</mat-label>
+                    <input matInput name="ratio-outsider" type="number" [(ngModel)]="ratioOutsider">
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Minions</mat-label>
+                    <input matInput type="number" name="ratio-minion" [(ngModel)]="ratioMinion">
+                  </mat-form-field>
+                </td>
+                <td>
+                  <mat-form-field>
+                    <mat-label>Demons</mat-label>
+                    <input matInput type="number" name="ratio-demon" [(ngModel)]="ratioDemon">
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <button type="button" class="btn btn-secondary" (click)="randomize()">Spin the Randomizer</button>
+      </div>
+    </div>
+</div>

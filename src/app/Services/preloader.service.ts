@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, forkJoin, Observable } from 'rxjs';
+import { RoleModifier } from '../Artifacts/RoleModifier';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class PreloaderService {
       //postprocess the role data and inject the correct image URLs for each of them
       let roleDataModified: Role[] = []
       for(let obj of roleData) {
-        roleDataModified.push({
+
+        let role: Role = {
           id: obj.id,
           isDisabled: obj.isDisabled,
           name: obj.name,
@@ -30,7 +32,10 @@ export class PreloaderService {
           roleType: obj.roleType,
           icon: `http://cors.stormcloud.host/https://bloodontheclocktower.com/script${obj.icon.substr(1, obj.icon.length)}`,
           print: `http://cors.stormcloud.host/https://bloodontheclocktower.com/script${obj.print.substr(1, obj.print.length)}`
-        })
+        }
+
+        role.modifier = RoleModifier.buildRoleModifier(role)
+        roleDataModified.push(role)
       }
       
       // Sort the role data alphabetically
@@ -64,7 +69,8 @@ export interface Role {
   name: string,
   print: string,
   roleType: string,
-  version: string
+  version: string,
+  modifier?: RoleModifier
 }
 
 export interface HatredRoot {

@@ -1,2 +1,6 @@
-Notes for each day will go here. Tabs for each day. Fun bullshit
-Will grow with each player.
+<button mat-raised-button (click)="addTab()">+Day</button>
+<mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="setDay($event)">
+  <mat-tab *ngFor="let tab of tabs; let index = index" label="Day {{index}}">
+    Contents for {{tab}} tab
+  </mat-tab>
+</mat-tab-group>

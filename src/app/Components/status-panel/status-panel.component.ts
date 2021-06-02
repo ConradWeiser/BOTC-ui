@@ -13,7 +13,6 @@ export class StatusPanelComponent {
 
   update() {
     this.activePlayersEmitter.emit(this.activePlayers)
-    console.log("Updated")
   }
 
 }

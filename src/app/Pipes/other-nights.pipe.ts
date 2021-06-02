@@ -9,9 +9,6 @@ export class OtherNightsPipe implements PipeTransform {
 
   transform(activePlayers: PlayerElement[], nightsheet: Nightsheet): PlayerElement[] {
 
-    console.log(activePlayers)
-    console.log(nightsheet)
-    
     // For everything in the first night, get just the relevent active players and sort them
     const response: PlayerElement[] = []
     for(let obj of nightsheet.otherNight) {

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { PlayerElement } from '../player-list/player-list.component';
 
 @Component({
@@ -10,16 +11,19 @@ export class NotesPanelComponent {
 
   @Input() activePlayers: PlayerElement[] = []
   @Output() activePlayersEmitter = new EventEmitter<PlayerElement[]>()
+  @Output() currentDayEmitter = new EventEmitter<Number>()
 
-  activeTabs: TabData[] = []
+  selected = new FormControl(0)
 
-  update() {
-    this.activePlayersEmitter.emit(this.activePlayers)
-    console.log("Updated")
+  tabs: string[] = ['Day 0']
+
+  setDay(event: any) {
+    this.selected.setValue(event)
+    this.currentDayEmitter.emit(this.selected.value)
   }
 
-  addDay() {
-    this.activeTabs.push({tabName: `${this.activeTabs.length}`})
+  addTab() {
+    this.tabs.push('New')
   }
 
 }
